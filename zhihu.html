@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>知乎 - 有问题，就会有答案</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: #f6f6f6;
+            max-width: 500px;
+            margin: 0 auto;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== Header ===== */
+        .header {
+            background-color: #fff;
+            padding: 8px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .header-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0066ff;
+            flex-shrink: 0;
+            letter-spacing: -0.5px;
+        }
+        .search-bar {
+            flex: 1;
+            background-color: #f6f6f6;
+            border-radius: 17px;
+            padding: 7px 12px;
+            color: #8590a6;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .search-bar svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+        .search-bar span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .header-actions {
+            display: flex;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+        .header-actions svg {
+            width: 22px;
+            height: 22px;
+            color: #8590a6;
+        }
+        .header-btn {
+            position: relative;
+        }
+        .badge {
+            position: absolute;
+            top: -4px;
+            right: -6px;
+            background: #f1403c;
+            color: #fff;
+            font-size: 10px;
+            padding: 0 5px;
+            border-radius: 8px;
+            min-width: 16px;
+            height: 16px;
+            line-height: 16px;
+            text-align: center;
+        }
+
+        /* ===== Tabs ===== */
+        .tabs {
+            display: flex;
+            background-color: #fff;
+            border-bottom: 0.5px solid #ebebeb;
+            padding: 0 16px;
+            position: sticky;
+            top: 42px;
+            z-index: 99;
+        }
+        .tab {
+            padding: 11px 0;
+            margin-right: 24px;
+            font-size: 15px;
+            color: #8590a6;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .tab.active {
+            color: #1a1a1a;
+            border-bottom-color: #0066ff;
+            font-weight: 600;
+        }
+
+        /* ===== Feed ===== */
+        .feed { padding-bottom: 70px; }
+
+        .question-card {
+            background-color: #fff;
+            padding: 16px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        /* 话题标签 */
+        .topic-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 12px;
+            color: #0066ff;
+            margin-bottom: 8px;
+        }
+        .topic-tag::before {
+            content: '';
+            width: 3px;
+            height: 3px;
+            background: #0066ff;
+            border-radius: 50%;
+        }
+
+        .question-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+        }
+
+        /* 热门标签 */
+        .hot-label {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b, #f1403c);
+            color: #fff;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 500;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+        .hot-label.blue {
+            background: linear-gradient(135deg, #4facfe, #0066ff);
+        }
+        .hot-label.orange {
+            background: linear-gradient(135deg, #ffa751, #f7971e);
+        }
+
+        /* 回答者信息 */
+        .answer-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .author-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .author-avatar.av2 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .author-avatar.av3 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .author-avatar.av4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        .author-avatar.av5 { background: linear-gradient(135deg, #fa709a, #fee140); }
+        .author-avatar.av6 { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #8590a6;
+            overflow: hidden;
+        }
+        .author-name {
+            color: #444;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .author-badge {
+            color: #f1403c;
+            font-size: 11px;
+        }
+        .author-desc {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .question-excerpt {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+
+        .read-more {
+            color: #175199;
+            font-size: 14px;
+        }
+
+        /* 图片预览 */
+        .answer-images {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .answer-img {
+            flex: 1;
+            height: 80px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ccc;
+            font-size: 12px;
+        }
+        .answer-img-single {
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+            border-radius: 4px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #bbb;
+            font-size: 13px;
+        }
+
+        /* 底部互动栏 */
+        .question-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 10px;
+        }
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: #8590a6;
+        }
+        .footer-item svg {
+            width: 16px;
+            height: 16px;
+        }
+        .upvote-count {
+            font-weight: 500;
+        }
+
+        /* ===== 底部导航 ===== */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 6px 0 4px;
+            background-color: #fff;
+            border-top: 0.5px solid #ebebeb;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 500px;
+            margin: 0 auto;
+            z-index: 100;
+        }
+        .nav-item {
+            text-align: center;
+            color: #8590a6;
+            text-decoration: none;
+            font-size: 10px;
+            padding: 2px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+        .nav-item.active { color: #0066ff; }
+        .nav-item svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* 悬浮按钮 */
+        .home-btn {
+            position: fixed;
+            bottom: 72px;
+            right: 12px;
+            width: 44px;
+            height: 44px;
+            background-color: rgba(50,50,50,0.85);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+            font-size: 18px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* 分隔广告 */
+        .ad-card {
+            background: #fff;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: #b0b0b0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ad-tag {
+            font-size: 10px;
+            border: 0.5px solid #ccc;
+            border-radius: 2px;
+            padding: 0 3px;
+            color: #bbb;
+        }
+        .ad-content {
+            flex: 1;
+        }
+        .ad-title {
+            color: #1a1a1a;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* 回答数显示 */
+        .answer-count-bar {
+            font-size: 12px;
+            color: #8590a6;
+            margin-bottom: 8px;
+        }
+        .answer-count-bar strong {
+            color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== 顶部 ===== -->
+    <div class="header">
+        <div class="header-logo">知乎</div>
+        <div class="search-bar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <span>《缩小人保护法》二审修正案解读</span>
+        </div>
+        <div class="header-actions">
+            <div class="header-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                </svg>
+                <span class="badge">6</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <div class="tab active">推荐</div>
+        <div class="tab">热榜</div>
+        <div class="tab">视频</div>
+        <div class="tab">关注</div>
+    </div>
+
+    <!-- ===== 信息流 ===== -->
+    <div class="feed">
+
+        <!-- 问题 1 -->
+        <a href="zhihu_01.html" class="question-card">
+            <div class="topic-tag">社会学 · 缩小人权益</div>
+            <div class="question-title">
+                都 2026 年了，缩小人的处境到底改善了多少？说点真实经历而不是官方数据。<span class="hot-label">热</span>
+            </div>
+            <div class="answer-author">
+                <div class="author-avatar">林</div>
+                <div class="author-info">
+                    <span class="author-name">林深见鹿</span>
+                    <span>缩小者 · 前电气工程师 · 缩小3年</span>
+                </div>
+            </div>
+            <div class="question-excerpt">
+                谢邀。作为一个被缩小了三年、目前身高3.4厘米的人，我不说数据，只说今天下午刚发生的事。我坐在专用通道等公交车的缩小人站台上，旁边经过一个穿高跟鞋的女人，她的鞋跟踩在我正前方二十厘米的位置——注意，这已经是"专用站台"了。那个震动差点把我甩下去。我一个人在上面喊了三分钟，…
+            </div>
+            <div class="question-footer">
+                <div class="footer-left">
+                    <div class="footer-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        <span class="upvote-count">14,273</span>
+                    </div>
+                    <div class="footer-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span>1,247</span>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                </div>
+            </div>
+        </a>
+
+        <!-- 问题 2 -->
+        <a href="zhihu_02.html" class="question-card">
+            <div class="topic-tag">法律 · 商业伦理</div>
+            <div class="question-title">
+                如何看待最近被曝光的「小人养生馆」？里面到底在做什么？
+            </div>
+            <div class="answer-author">
+                <div class="author-avatar av2">沈</div>
+                <div class="author-info">
+                    <span class="author-name">沈律说法</span>
+                    <span class="author-badge">✓</span>
+                    <span>执业律师 · 知乎法律话题优秀答主</span>
+                </div>
+            </div>
+            <div class="question-excerpt">
+                利益相关：代理过两起相关案件。先说结论——目前市面上打着"体验式SPA""微观理疗"旗号的会所，绝大多数在做的事情和招牌上写的完全不一样。我接触过的案例里，有一家所谓"足道养生"，实际上就是让缩小人在女技师的脚上……对，你没看错。付钱的是正常体型的女性顾客。缩小人是"工具"…
+            </div>
+            <div class="question-footer">
+                <div class="footer-left">
+                    <div class="footer-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        <span class="upvote-count">23,891</span>
+                    </div>
+                    <div class="footer-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span>3,892</span>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                </div>
+            </div>
+        </a>
+
+        <!-- 问题 3 -->
+        <a href="zhihu_03.html" class="question-card">
+            <div class="topic-tag">亲密关系 · 两性</div>
+            <div class="question-title">
+                老公缩小以后，夫妻生活怎么办？有没有过来人分享下真实情况……<span class="hot-label">热</span>
+            </div>
+            <div class="answer-author">
+                <div class="author-avatar av5">匿</div>
+                <div class="author-info">
+                    <span class="author-name">匿名用户</span>
+                </div>
+            </div>
+            <div class="question-excerpt">
+                不敢用大号回答，怕被认出来。我老公缩小快两年了，50倍，目前3.5厘米左右。感情基础还在，他也很努力，但有些事情真的……不知道怎么说。他现在整个人站起来还没有我的那个……嗯，长度的一半。每次他很认真地想"取悦"我的时候我心里特别难受，因为说实话真的几乎没有感觉。但我不敢说，怕…
+            </div>
+            <div class="question-footer">
+                <div class="footer-left">
+                    <div class="footer-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        <span class="upvote-count">31,547</span>
+                    </div>
+                    <div class="footer-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span>2,156</span>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                </div>
+            </div>
+        </a>
+
+        <!-- 广告插入 -->
+        <div class="ad-card">
+            <span class="ad-tag">广告</span>
+            <div class="ad-content">
+                <div class="ad-title">微界科技 · 缩小人智能生活舱 Pro 2026</div>
+                <div style="margin-top:4px;">恒温恒湿 · AI语音联动 · 三防认证 — 给他一个安全的家</div>
+            </div>
+        </div>
+
+        <!-- 问题 4 -->
+        <a href="zhihu_04.html" class="question-card">
+            <div class="topic-tag">个人体验 · 世界观</div>
+            <div class="question-title">
+                从一米七变成不到两毫米是一种什么样的体验？
+            </div>
+            <div class="answer-author">
+                <div class="author-avatar av3">陈</div>
+                <div class="author-info">
+                    <span class="author-name">陈一粒</span>
+                    <span>1000倍缩小者 · 身高1.75mm · 前建筑师</span>
+                </div>
+            </div>
+            <div class="question-excerpt">
+                2,841人赞同了该回答。——我曾经设计过四栋超高层建筑。缩小之后，我站在我老婆的书桌上，抬头看她的马克杯。那个马克杯高大概9厘米，在我的视角里它大概有52米高——正好是我设计的第一个项目"临港之星"的高度。宇宙跟我开了一个很残忍的玩笑。回到题目，我分几个层面说一下具体感受…
+            </div>
+            <div class="question-footer">
+                <div class="footer-left">
+                    <div class="footer-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        <span class="upvote-count">2,841</span>
+                    </div>
+                    <div class="footer-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span>5,678</span>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                </div>
+            </div>
+        </a>
+
+        <!-- 问题 5 -->
+        <a href="zhihu_05.html" class="question-card">
+            <div class="topic-tag">伦理学 · 生命科学</div>
+            <div class="question-title">
+                二次缩小到细胞级别的人，还算「人」吗？法理和伦理上应该如何界定？
+            </div>
+            <div class="answer-author">
+                <div class="author-avatar av4">方</div>
+                <div class="author-info">
+                    <span class="author-name">方舟子弟</span>
+                    <span class="author-badge">✓</span>
+                    <span>生命伦理学博士 · 浙大伦理研究中心</span>
+                </div>
+            </div>
+            <div class="question-excerpt">
+                先厘清一个概念。题目说的"二次缩小"，学术上叫"递进微缩"（Recursive Miniaturization），是在已缩小基础上再缩小，最终体型可以到微米甚至亚微米级别。我导师去年跟进过一个案例：一名初次缩小50倍（3.5cm）的男性，被前女友私下进行了二次缩小，最终体型约17微米——比人体白细胞还小。当地派出所…
+            </div>
+            <div class="question-footer">
+                <div class="footer-left">
+                    <div class="footer-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        <span class="upvote-count">7,203</span>
+                    </div>
+                    <div class="footer-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span>892</span>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                </div>
+            </div>
+        </a>
+
+        <!-- 问题 6 -->
+        <a href="zhihu_06.html" class="question-card">
+            <div class="topic-tag">刑法 · 社会争议</div>
+            <div class="question-title">
+                如何评价浙江法院首例「缩小替代刑」判决？让偷拍犯缩小后交给受害女性监管是否合理？<span class="hot-label orange">争议</span>
+            </div>
+            <div class="answer-author">
+                <div class="author-avatar av6">知</div>
+                <div class="author-info">
+                    <span class="author-name">知乎用户 DXSW09</span>
+                </div>
+            </div>
+            <div class="question-excerpt">
+                关注这个案子很久了。简单复述一下：杭州某男因在健身房偷拍女性更衣被抓，受害者有三位。法院依据2025年新修订的《微型化刑罚适用条例（试行）》，判处该男缩小至3.5cm，移交三名受害者轮流监管各四个月。消息出来以后微博两极分化严重。支持的人说「让他体验一下被支配被注视的感觉」…
+            </div>
+            <div class="question-footer">
+                <div class="footer-left">
+                    <div class="footer-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        <span class="upvote-count">18,429</span>
+                    </div>
+                    <div class="footer-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span>4,521</span>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                </div>
+            </div>
+        </a>
+
+        <!-- 问题 7：新增一条增加真实感 -->
+        <a href="#" class="question-card">
+            <div class="topic-tag">心理学</div>
+            <div class="question-title">
+                女朋友说她对「缩小play」有幻想，但我们都是正常体型，该怎么回应？<span class="hot-label blue">盐选</span>
+            </div>
+            <div class="answer-author">
+                <div class="author-avatar" style="background:linear-gradient(135deg,#ff9a9e,#fecfef)">心</div>
+                <div class="author-info">
+                    <span class="author-name">心理咨询师阿梦</span>
+                    <span class="author-badge">✓</span>
+                    <span>国家二级心理咨询师 · 亲密关系方向</span>
+                </div>
+            </div>
+            <div class="question-excerpt">
+                先说个前提：这类幻想比你想象中的普遍得多。自从"缩小现象"变成现实以后，很多原本只停留在亚文化圈的性幻想逐渐进入了大众视野。我的来访者中，有明确"体型差"相关幻想的比例从2023年的不到2%上升到了现在的将近11%，其中女性略多于…
+            </div>
+            <div class="question-footer">
+                <div class="footer-left">
+                    <div class="footer-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        <span class="upvote-count">6,782</span>
+                    </div>
+                    <div class="footer-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span>956</span>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                </div>
+            </div>
+        </a>
+
+    </div>
+
+    <!-- ===== 底部导航 ===== -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>
+            <span>首页</span>
+        </a>
+        <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span>知学堂</span>
+        </a>
+        <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span></span>
+        </a>
+        <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>消息</span>
+        </a>
+        <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>我的</span>
+        </a>
+    </div>
+
+    <a href="index.html" class="home-btn">⬅</a>
+</body>
+</html>
