@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>手机桌面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            overflow: hidden;
+        }
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-size: 14px;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+        .status-bar .time {
+            font-weight: 600;
+        }
+        .status-icons {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+        }
+        .datetime {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        .datetime .time-display {
+            font-size: 64px;
+            font-weight: 200;
+            letter-spacing: -2px;
+        }
+        .datetime .date-display {
+            font-size: 18px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        .app-grid {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+        .app-icon {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+            text-decoration: none;
+        }
+        .app-icon:hover {
+            transform: scale(1.1);
+        }
+        .app-icon:active {
+            transform: scale(0.95);
+        }
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 8px;
+        }
+        .icon-box.zhihu { background-color: #0066ff; }
+        .icon-box.xiaohongshu { background-color: #ff2442; }
+        .icon-box.tieba { background-color: #4a9df8; }
+        .icon-box.weibo { background-color: #ff8200; }
+        .icon-box span {
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .app-name {
+            color: white;
+            font-size: 12px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        .home-indicator {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 134px;
+            height: 5px;
+            background-color: rgba(255,255,255,0.6);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span class="time" id="statusTime">9:41</span>
+        <div class="status-icons">
+            <span>📶</span>
+            <span>📡</span>
+            <span>🔋 87%</span>
+        </div>
+    </div>
+
+    <div class="datetime">
+        <div class="time-display" id="mainTime">9:41</div>
+        <div class="date-display" id="mainDate">12月18日 星期三</div>
+    </div>
+
+    <div class="app-grid">
+        <a href="zhihu.html" class="app-icon">
+            <div class="icon-box zhihu">
+                <span>知</span>
+            </div>
+            <div class="app-name">知乎</div>
+        </a>
+
+        <a href="xiaohongshu.html" class="app-icon">
+            <div class="icon-box xiaohongshu">
+                <span>📕</span>
+            </div>
+            <div class="app-name">小红书</div>
+        </a>
+
+        <a href="tieba.html" class="app-icon">
+            <div class="icon-box tieba">
+                <span>贴</span>
+            </div>
+            <div class="app-name">百度贴吧</div>
+        </a>
+
+        <a href="weibo.html" class="app-icon">
+            <div class="icon-box weibo">
+                <span>微</span>
+            </div>
+            <div class="app-name">微博</div>
+        </a>
+    </div>
+
+    <div class="home-indicator"></div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const timeStr = `${hours}:${minutes}`;
+            
+            const days = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            const month = now.getMonth() + 1;
+            const date = now.getDate();
+            const day = days[now.getDay()];
+            const dateStr = `${month}月${date}日 ${day}`;
+            
+            document.getElementById('statusTime').textContent = timeStr;
+            document.getElementById('mainTime').textContent = timeStr;
+            document.getElementById('mainDate').textContent = dateStr;
+        }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
