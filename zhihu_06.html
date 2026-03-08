@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>如何评价浙江法院首例「缩小替代刑」判决？ - 知乎</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: #fff;
+            max-width: 500px;
+            margin: 0 auto;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+        }
+        .nav-header {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-bottom: 0.5px solid #ebebeb;
+            z-index: 100;
+        }
+        .back-btn { color: #8590a6; text-decoration: none; display: flex; align-items: center; }
+        .back-btn svg { width: 24px; height: 24px; }
+        .nav-actions svg { width: 24px; height: 24px; color: #8590a6; margin-left: 16px; }
+        .question-header {
+            padding: 16px;
+            background: #fff;
+            border-bottom: 8px solid #f6f6f6;
+        }
+        .q-tags { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+        .q-tag {
+            background: #f6f6f6;
+            color: #8590a6;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+        .q-title {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        .q-desc {
+            font-size: 14px;
+            color: #646464;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            padding: 12px;
+            background: #fafafa;
+            border-radius: 6px;
+        }
+        .q-meta {
+            font-size: 13px;
+            color: #8590a6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .q-btn {
+            background: #f6f6f6;
+            color: #0066ff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .answer-container { padding: 16px; padding-bottom: 80px; }
+        .answer-divider {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #8590a6;
+            margin-bottom: 16px;
+        }
+        .answer-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 0.5px solid #ebebeb;
+        }
+        .author-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .author-left { display: flex; align-items: center; gap: 10px; }
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .author-info { display: flex; flex-direction: column; gap: 2px; }
+        .author-name { font-size: 15px; font-weight: 600; }
+        .author-bio { font-size: 12px; color: #8590a6; }
+        .follow-btn {
+            color: #0066ff;
+            background: rgba(0,102,255,0.1);
+            border: none;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .article-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #1a1a1a;
+        }
+        .article-content p { margin-bottom: 16px; }
+        .article-content strong { font-weight: 600; }
+        .article-content blockquote {
+            border-left: 3px solid #ebebeb;
+            padding-left: 12px;
+            color: #646464;
+            margin-bottom: 16px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        .article-content .section-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+        .article-content .highlight-box {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #444;
+        }
+        .article-content .highlight-box strong {
+            color: #1a1a1a;
+        }
+        .publish-info {
+            font-size: 12px;
+            color: #bfbfbf;
+            margin-top: 24px;
+            padding-bottom: 16px;
+            border-bottom: 0.5px solid #ebebeb;
+        }
+        .comments-section { padding: 16px 0; }
+        .comments-header {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .comment-item { display: flex; gap: 12px; margin-bottom: 22px; }
+        .c-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #fff;
+        }
+        .c-content { flex: 1; }
+        .c-name { font-size: 13px; color: #8590a6; margin-bottom: 4px; font-weight: 500; }
+        .c-name.author-tag::after {
+            content: '作者';
+            background: #f6f6f6;
+            color: #8590a6;
+            font-size: 10px;
+            padding: 1px 4px;
+            border-radius: 2px;
+            margin-left: 6px;
+        }
+        .c-name .ip-tag {
+            font-weight: 400;
+            color: #bbb;
+            font-size: 11px;
+        }
+        .c-text { font-size: 14px; line-height: 1.6; margin-bottom: 6px; }
+        .c-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 12px;
+            color: #8590a6;
+        }
+        .c-reply-box {
+            background: #f6f6f6;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-top: 8px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .c-reply-name { color: #555; font-weight: 500; }
+        .c-more-reply {
+            color: #0066ff;
+            font-size: 13px;
+            margin-top: 6px;
+            display: block;
+        }
+        .comment-divider {
+            width: 100%;
+            height: 0.5px;
+            background: #f0f0f0;
+            margin-bottom: 18px;
+        }
+
+        .bottom-action-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            border-top: 0.5px solid #ebebeb;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: calc(8px + env(safe-area-inset-bottom));
+            z-index: 100;
+        }
+        .vote-group {
+            display: flex;
+            background: #f6f6f6;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .vote-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            border: none;
+            background: transparent;
+            color: #0066ff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .vote-btn.downvote {
+            border-left: 1px solid #e8e8e8;
+            color: #8590a6;
+        }
+        .action-icons { display: flex; gap: 20px; color: #8590a6; }
+        .action-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            font-size: 10px;
+        }
+        .action-icon svg { width: 20px; height: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="nav-header">
+        <a href="zhihu.html" class="back-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </a>
+        <div class="nav-actions">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        </div>
+    </div>
+
+    <div class="question-header">
+        <div class="q-tags">
+            <span class="q-tag">刑法</span>
+            <span class="q-tag">社会争议</span>
+            <span class="q-tag">缩小替代刑</span>
+        </div>
+        <h1 class="q-title">如何评价浙江法院首例「缩小替代刑」判决？让偷拍犯缩小后交给受害女性监管是否合理？</h1>
+        <div class="q-desc">
+            2026年1月，杭州某健身房偷拍案宣判。被告人王某（男，29岁）因在女更衣室安装针孔摄像头，依据2025年新修《微型化刑罚适用条例（试行）》，被判处缩小至3.5cm，移交三名受害女性轮流监管各四个月，为期一年。判决书公开后引发巨大争议。
+        </div>
+        <div class="q-meta">
+            <span>关注 6.7万 · 浏览 1,890万</span>
+            <button class="q-btn">+ 关注问题</button>
+        </div>
+    </div>
+
+    <div class="answer-container">
+        <div class="answer-divider">4,521 个回答</div>
+
+        <div class="author-card">
+            <div class="author-left">
+                <div class="avatar" style="background: linear-gradient(135deg,#a18cd1,#fbc2eb);">知</div>
+                <div class="author-info">
+                    <span class="author-name">知乎用户 DXSW09</span>
+                    <span class="author-bio">吃瓜群众 · 法律爱好者 · 杭州本地人</span>
+                </div>
+            </div>
+            <button class="follow-btn">+ 关注</button>
+        </div>
+
+        <div class="article-content">
+            <p>杭州本地人，就住出事那个健身房隔壁小区的。这案子从去年11月曝光到今年1月判决，我们业主群讨论了整整三个月。我来说点你们在新闻通稿里看不到的东西。</p>
+
+            <p class="section-title">一、先说说这个案子本身</p>
+
+            <p>新闻里只说"偷拍"，其实情况比大部分人以为的严重。这人在女更衣室的天花板通风口、淋浴间隔板缝隙、甚至镜子后面一共装了六个摄像头，拍了大半年。被警方搜出来的视频有四百多G。受害者不止三个人，但愿意站出来走法律程序的是三位。</p>
+
+            <p>按原来的法律，这种事一般判个拘留罚款，最多一两年有期徒刑。说难听点，很多偷拍犯出来以后照犯不误。</p>
+
+            <p>然后 2025 年 9 月那个《微型化刑罚适用条例（试行）》出台了。核心意思就是：<strong>对于侵犯人身尊严类的犯罪（偷拍、猥亵、跟踪骚扰等），经受害人申请，法院可判处被告缩小至特定尺寸，交由受害方监管一定期限。</strong></p>
+
+            <p>三个受害者全部申请了。法院批了。</p>
+
+            <p class="section-title">二、具体怎么执行的</p>
+
+            <p>判决生效后，王某在拘留所里被执行了缩小——50倍，从一米七五变成 3.5 厘米。</p>
+
+            <p>我认识其中一个受害者的闺蜜，听她零零碎碎说了些细节（当然可能有添油加醋的成分，大家自行判断）。</p>
+
+            <div class="highlight-box">
+                <p>第一位监管人小A（化名），25岁，健身教练。</p>
+                <p>据说她领到人的那天，在拘留所签完交接文件，工作人员把一个透明的"移交盒"递给她——就那种巴掌大的有机玻璃盒子，里面是一个 3.5 厘米高的、光着身子缩在角落发抖的成年男性。</p>
+                <p>她当时低头看了一眼那个盒子里的人，就笑了。</p>
+                <p>据说她只说了一句话：<strong>"之前你在那个摄像头后面看了我半年，现在换我好好看看你。"</strong></p>
+            </div>
+
+            <p>后面的事就是各种传闻了，真假难辨。但根据条例规定，监管人有以下义务和权利：</p>
+
+            <p><strong>义务：</strong>保证被监管人的基本生存——提供食物、饮水、安全的居住空间。不得故意造成永久性身体伤害。每月接受一次司法所的视频检查。</p>
+
+            <p><strong>权利：</strong>除上述底线外，监管方式和日常安排"由监管人自行决定"。</p>
+
+            <p>对，你没看错。<strong>"由监管人自行决定"</strong>，这七个字就是整个争议的核心。</p>
+
+            <p class="section-title">三、争议在哪</p>
+
+            <p>支持方的逻辑很简单：这人偷拍了你，把你最隐私的画面录了下来，现在他被缩成 3.5 厘米交给你，他的命运完全由你决定——这叫因果报应。你觉得轻了？不存在的，一个 3.5 厘米高的成年男性，站在一个正常体型的女性面前，他连人家一根脚趾都不如大。人家的手掌对他来说就像一间卧室的地板。人家一口气就能把他吹飞。这种绝对的、不可逆的力量碾压，<strong>比关几年监狱恐怖多了</strong>。</p>
+
+            <p>反对方的逻辑也很清楚：这不就是合法化的私刑吗？"监管方式自行决定"，那要是监管人把他塞鞋里踩着上一天班怎么办？要是放在口袋里忘了、丢进洗衣机怎么办？条例只说"不得故意造成永久性伤害"，可一个 3.5 厘米的人对一个正常体型的人来说太脆弱了，很多"非故意"的日常行为都可能要他命。</p>
+
+            <p>还有一种声音我觉得值得深思：</p>
+
+            <blockquote>
+                "你们讨论这个刑罚够不够人道的时候，有没有想过一个问题——如果有些人'享受'这种被支配的状态呢？如果这个偷拍犯本身就有某种……特殊癖好呢？那这个刑罚到底是惩罚还是奖励？"
+            </blockquote>
+
+            <p>这条评论在微博上被转了两万多次。说实话我第一反应是觉得荒谬，但仔细想想，还真不是没有可能。</p>
+
+            <p class="section-title">四、我个人的看法</p>
+
+            <p>先亮观点：<strong>我谨慎支持，但认为条例细则必须完善。</strong></p>
+
+            <p>为什么支持？因为传统刑罚对偷拍这类犯罪的威慑力确实太弱了。关几天放出来，受害者一辈子的心理阴影。现在让犯罪者体验一下什么叫"被另一个人完全掌控"，让他切身感受那种连反抗的资格都没有的无助感——3.5 厘米的身高，面对一个正常女性，他连握紧拳头的意义都没有，她的一根手指就比他整条腿还粗。这种碾压级的体验，比任何说教都管用。</p>
+
+            <p>为什么说要谨慎？因为人性经不起考验。当一个活生生的人被缩小到你可以一手捏住、可以随手放进口袋或者丢在任何地方的时候……权力是会让人上瘾的。条例目前的监督机制太弱了，一个月检查一次，中间 29 天发生了什么谁也不知道。</p>
+
+            <p>而且说句不好听的，网上有些人的反应让我挺不舒服的。好多女生在评论区说"好爽""给我也来一个""想把他塞丝袜里带去逛街"之类的话——我理解这种情绪的来源，偷拍犯确实该死，但这种发言已经不是在讨论正义了，<strong>这是在消费一种权力快感。</strong></p>
+
+            <p>而一旦这种快感被合法化、日常化、娱乐化……那就不只是一个偷拍犯的问题了。今天你觉得偷拍犯活该，明天呢？酒驾的也缩小？家暴的也缩小？出轨的也缩小？</p>
+
+            <p><strong>当"把人缩小然后交给另一个人处置"变成一种常规手段的时候，这条路通向哪里，谁都说不好。</strong></p>
+
+            <p>以上。利益相关：纯吃瓜，和当事各方均无关系。欢迎理性讨论。</p>
+        </div>
+
+        <div class="publish-info">
+            编辑于 2026-02-19 21:17 · IP 属地浙江
+        </div>
+
+        <!-- ===== 评论区 ===== -->
+        <div class="comments-section">
+            <div class="comments-header">评论 4,521</div>
+
+            <!-- 评论 1 -->
+            <div class="comment-item">
+                <div class="c-avatar" style="background:#e17055;">嘉</div>
+                <div class="c-content">
+                    <div class="c-name">嘉嘉不吃香菜 <span class="ip-tag">· IP 浙江</span></div>
+                    <div class="c-text">我就是那个健身房的会员……事情没曝光之前我在那洗了半年的澡。看到新闻的那天我吐了。现在让这个人渣变成3厘米高被女生捏在手里，你跟我说不人道？那他偷拍我的时候人道了吗？？？</div>
+                    <div class="c-meta">
+                        <span>02-19 21:34</span>
+                        <span>赞 12,847</span>
+                        <span>回复 348</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-divider"></div>
+
+            <!-- 评论 2 -->
+            <div class="comment-item">
+                <div class="c-avatar" style="background:#636e72;">律</div>
+                <div class="c-content">
+                    <div class="c-name">邓律师在线 <span class="ip-tag">· IP 北京</span></div>
+                    <div class="c-text">执业律师说两句。这个条例最大的问题在于"监管方式自行决定"这个表述。法律条文不能有这种模糊空间。什么叫自行决定？关在盒子里是监管，放在鞋垫底下也是监管，甚至塞进嘴里含着也可以说是"确保不走丢"。没有细则就是在赋予监管人无限权力，而无限权力必然导致滥用。</div>
+                    <div class="c-meta">
+                        <span>02-20 09:05</span>
+                        <span>赞 8,453</span>
+                        <span>回复 267</span>
+                    </div>
+                    <div class="c-reply-box">
+                        <span class="c-reply-name">知乎用户 DXSW09</span> <span style="font-size:10px;color:#8590a6;background:#f6f6f6;padding:1px 4px;border-radius:2px;">作者</span>：同意。"自行决定"这四个字在立法技术上就是一个巨大的漏洞。
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-divider"></div>
+
+            <!-- 评论 3 -->
+            <div class="comment-item">
+                <div class="c-avatar" style="background:#fdcb6e;">匿</div>
+                <div class="c-content">
+                    <div class="c-name">匿名用户 <span class="ip-tag">· IP 浙江</span></div>
+                    <div class="c-text">不敢用大号。<br><br>我是三个当事人之一。不是小A，是后面的。<br><br>只想说一件事。我接手那天，从盒子里把他倒在掌心上的时候，他缩成一团不敢看我。3.5厘米，真的好小。我以前觉得自己是受害者，但那一刻看着他在我手心里抖，我突然意识到——他现在也是某种意义上的受害者了。<br><br>但这种想法只持续了大概十秒钟。因为紧接着我就想起了，他拍了我的什么、看了我的什么、在那个摄像头后面对着我的身体做了什么。<br><br>然后那十秒钟的同情就没了。<br><br>后面的事我不方便多说。只想告诉大家，条例里的那些保障措施是有执行的，司法所的人每月来检查，他活得好好的，吃得饱穿得暖，该有的基本人权一样没缺。<br><br>至于日常生活具体怎么安排的——就像条例说的，"我自行决定"。</div>
+                    <div class="c-meta">
+                        <span>02-21 01:12</span>
+                        <span>赞 34,208</span>
+                        <span>回复 1,847</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-divider"></div>
+
+            <!-- 评论 4 -->
+            <div class="comment-item">
+                <div class="c-avatar" style="background:#00b894;">二</div>
+                <div class="c-content">
+                    <div class="c-name">二手理想主义 <span class="ip-tag">· IP 广东</span></div>
+                    <div class="c-text">最后那个匿名回答吓死我了。"我自行决定"四个字读出来鸡皮疙瘩全起来了。有一种冷飕飕的权力感在里面。姐你真的很酷但我同时真的很害怕你（不是冒犯</div>
+                    <div class="c-meta">
+                        <span>02-21 02:03</span>
+                        <span>赞 6,129</span>
+                        <span>回复 89</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-divider"></div>
+
+            <!-- 评论 5 -->
+            <div class="comment-item">
+                <div class="c-avatar" style="background:#6c5ce7;">阿</div>
+                <div class="c-content">
+                    <div class="c-name">阿肆是条柴犬 <span class="ip-tag">· IP 上海</span></div>
+                    <div class="c-text">看到答主说"有些人可能享受被支配"那段我愣了一下……然后打开某红书搜了一下"缩小替代刑"。好家伙，热帖第一条就是一个男的说"好羡慕这个偷拍犯"，底下两千条评论全是"我也想被缩小然后交给一个漂亮姐姐管教"。<br><br>这世界太他妈魔幻了。</div>
+                    <div class="c-meta">
+                        <span>02-22 18:46</span>
+                        <span>赞 9,751</span>
+                        <span>回复 432</span>
+                    </div>
+                    <div class="c-reply-box">
+                        <span class="c-reply-name">知乎用户 DXSW09</span> <span style="font-size:10px;color:#8590a6;background:#f6f6f6;padding:1px 4px;border-radius:2px;">作者</span>：所以我说这个问题比表面上复杂得多。当"惩罚"对某些人来说变成了"奖励"，刑罚的意义就被彻底消解了。
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-divider"></div>
+
+            <!-- 评论 6 -->
+            <div class="comment-item">
+                <div class="c-avatar" style="background:#fd79a8;">小</div>
+                <div class="c-content">
+                    <div class="c-name">小猪佩奇的尾巴 <span class="ip-tag">· IP 四川</span></div>
+                    <div class="c-text">你们有没有人关注过那个最现实的问题——这人缩小以后没有收入了，刑满恢复正常体型以后怎么回归社会？简历怎么写？"2026.1-2027.1：被三位女性轮流监管，负责在她们手掌上站立"？？</div>
+                    <div class="c-meta">
+                        <span>02-23 14:20</span>
+                        <span>赞 7,382</span>
+                        <span>回复 256</span>
+                    </div>
+                    <div class="c-reply-box">
+                        <span class="c-reply-name">爱吃鱼的猫</span>：条例里说了，刑满后恢复正常体型，缩小期间视为"社区矫正"，有犯罪记录但不算坐牢。不过说实话哪个公司敢用一个被三个女的管了一年的偷拍犯啊……
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-divider"></div>
+
+            <!-- 评论 7 -->
+            <div class="comment-item">
+                <div class="c-avatar" style="background:#fab1a0;">L</div>
+                <div class="c-content">
+                    <div class="c-name">LemonTree <span class="ip-tag">· IP 江苏</span></div>
+                    <div class="c-text">女生视角：不讨论对错，只说感受。如果有一天一个偷拍过我的人被缩小到3.5厘米放在我掌心里……我不确定我能管好自己。不是说我想伤害他，是这种"他的命完全由我决定"的感觉太让人上头了。你们仔细想想，一个曾经伤害过你的人，现在他还没你小指长，他看你的眼神里全是恐惧……这种感觉是会让人成瘾的。我觉得条例最可怕的地方就在这里——它释放出来的不只是正义，还有人性里某些很深的东西。</div>
+                    <div class="c-meta">
+                        <span>02-25 23:38</span>
+                        <span>赞 15,674</span>
+                        <span>回复 891</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-divider"></div>
+
+            <!-- 评论 8 -->
+            <div class="comment-item">
+                <div class="c-avatar" style="background:#55a3e8;">老</div>
+                <div class="c-content">
+                    <div class="c-name">老王隔壁的老李 <span class="ip-tag">· IP 山东</span></div>
+                    <div class="c-text">说个事儿你们听。我同事的老婆在司法所工作，负责每月视频检查这些"被监管人"。她说上个月去检查的时候，第二位监管人小B让那个偷拍犯站在自己面前的桌面上，让他自己脱了衣服转一圈给镜头看，证明"身上没有伤"。<br><br>一个三厘米高的赤裸男人，站在一个正常女性面前转圈展示身体。<br><br>同事老婆说，她看完检查回来坐在车里愣了十分钟。她说那个画面太荒诞了——但法律上完全合规，因为条例要求的就是"证明被监管人身体完好"。</div>
+                    <div class="c-meta">
+                        <span>02-27 12:55</span>
+                        <span>赞 11,230</span>
+                        <span>回复 578</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-divider"></div>
+
+            <!-- 评论 9 -->
+            <div class="comment-item">
+                <div class="c-avatar" style="background:#2d3436;">辩</div>
+                <div class="c-content">
+                    <div class="c-name">辩证地看问题 <span class="ip-tag">· IP 北京</span></div>
+                    <div class="c-text">大家别忘了一件事：这个条例是「试行」的。也就是说这案子本身就是一场社会实验。一年以后王某恢复正常体型，到时候会有一次全面的评估——他的心理状态、再犯可能性、三位监管人的行为是否合规。这些数据会决定这个条例是推广还是废除。所以某种意义上，这三个女生的每一个行为都在被历史记录。压力其实在她们身上。</div>
+                    <div class="c-meta">
+                        <span>03-01 10:12</span>
+                        <span>赞 4,581</span>
+                        <span>回复 123</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-divider"></div>
+
+            <!-- 评论 10 -->
+            <div class="comment-item">
+                <div class="c-avatar" style="background:#e84393;">莫</div>
+                <div class="c-content">
+                    <div class="c-name">莫名其妙的鱼 <span class="ip-tag">· IP 湖北</span></div>
+                    <div class="c-text">啊这……我看了半天评论发现了一件很微妙的事：在座的女性几乎全部在讨论"拿到他以后会怎么样"，而男性几乎全部在讨论"这个制度是否合法"。<br><br>这个性别差异本身就很说明问题了吧。</div>
+                    <div class="c-meta">
+                        <span>03-03 16:41</span>
+                        <span>赞 21,887</span>
+                        <span>回复 1,204</span>
+                    </div>
+                    <div class="c-reply-box">
+                        <span class="c-reply-name">西瓜冰棍</span>：因为男的在代入的是那个3.5厘米的人，女的在代入的是拿着他的人。屁股决定脑袋（字面意义上的
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-divider"></div>
+
+            <!-- 评论 11 -->
+            <div class="comment-item">
+                <div class="c-avatar" style="background:#a29bfe;">匿</div>
+                <div class="c-content">
+                    <div class="c-name">匿名用户 <span class="ip-tag">· IP 浙江</span></div>
+                    <div class="c-text">认识小A的人来说句实话。网上传的那些有的夸张了有的反而说轻了。只说一个细节：她每天出门上班之前会把他放在门口的鞋柜上，旁边放一碗水和一些食物碎，然后正常锁门走人。对，就是一个人待着，在一个黑漆漆的鞋柜上，旁边全是比他高十几倍的各种鞋子，一待就是十个小时。<br><br>她说过一句话：「他当初在摄像头后面看了我半年，现在让他在我鞋柜上等我半天，不过分吧？」</div>
+                    <div class="c-meta">
+                        <span>03-05 19:27</span>
+                        <span>赞 8,943</span>
+                        <span>回复 467</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-divider"></div>
+
+            <!-- 评论 12 -->
+            <div class="comment-item">
+                <div class="c-avatar" style="background:#81ecec; color:#00b894;">蜗</div>
+                <div class="c-content">
+                    <div class="c-name">蜗牛跑得快 <span class="ip-tag">· IP 广东</span></div>
+                    <div class="c-text">所有讨论里最让我窒息的一个细节：<br><br>条例规定，被监管人可以对监管人的行为进行投诉。投诉方式是——对着微型手机发语音给司法所。<br><br>但问题来了，3.5厘米的人发出的声音频率太高，正常人几乎听不见。也就是说他在监管人面前喊什么、哭什么、求什么，监管人可以完全选择听不到。<br><br>这才是真正的恐怖之处。不是她要伤害你，而是<strong>你的声音对她来说根本就不存在。</strong></div>
+                    <div class="c-meta">
+                        <span>03-07 08:55</span>
+                        <span>赞 19,032</span>
+                        <span>回复 734</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-divider"></div>
+
+            <!-- 评论 13 -->
+            <div class="comment-item">
+                <div class="c-avatar" style="background:#ffeaa7; color:#d63031;">猫</div>
+                <div class="c-content">
+                    <div class="c-name">猫在键盘上 <span class="ip-tag">· IP 上海</span></div>
+                    <div class="c-text">评论区比正文恐怖一百倍。我一个大老爷们儿看得后脊梁发凉。<br><br>不过话说回来，发凉的同时我又想了想——如果被偷拍的是我妈或者我女朋友，我大概也会觉得这判决挺好的。<br><br>人就是这么双标的生物。</div>
+                    <div class="c-meta">
+                        <span>03-09 11:30</span>
+                        <span>赞 3,456</span>
+                        <span>回复 87</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 底部操作栏 -->
+    <div class="bottom-action-bar">
+        <div class="vote-group">
+            <button class="vote-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                赞同 1.8万
+            </button>
+            <button class="vote-btn downvote">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" style="transform:rotate(180deg);"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+            </button>
+        </div>
+        <div class="action-icons">
+            <div class="action-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span>4521</span>
+            </div>
+            <div class="action-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                <span>收藏</span>
+            </div>
+            <div class="action-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>分享</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
