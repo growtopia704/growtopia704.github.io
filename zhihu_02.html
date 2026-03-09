@@ -14,428 +14,776 @@
             color: #1a1a1a;
             -webkit-font-smoothing: antialiased;
         }
-
-        /* ===== 顶部导航 ===== */
         .nav-header {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 16px;
-            border-bottom: 0.5px solid #ebebeb;
-            z-index: 100;
+            position: sticky; top: 0; background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(12px); display: flex; align-items: center;
+            justify-content: space-between; padding: 10px 16px;
+            border-bottom: 0.5px solid #ebebeb; z-index: 100;
         }
-        .back-btn {
-            color: #8590a6;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
+        .back-btn { color: #8590a6; text-decoration: none; display: flex; align-items: center; }
         .back-btn svg { width: 24px; height: 24px; }
-        .nav-actions svg { width: 24px; height: 24px; color: #8590a6; margin-left: 16px; }
-
-        /* ===== 问题区域 ===== */
-        .question-header {
-            padding: 16px;
-            background: #fff;
-            border-bottom: 8px solid #f6f6f6;
+        .nav-right { display: flex; align-items: center; gap: 18px; }
+        .nav-right svg { width: 22px; height: 22px; color: #8590a6; }
+        .question-section {
+            padding: 20px 16px 16px; border-bottom: 8px solid #f6f6f6;
         }
-        .q-tags {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
+        .q-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
         .q-tag {
-            background: #f6f6f6;
-            color: #8590a6;
-            font-size: 12px;
-            padding: 4px 10px;
-            border-radius: 12px;
+            background: #f6f6f6; color: #8590a6; font-size: 12px;
+            padding: 3px 10px; border-radius: 14px;
         }
         .q-title {
-            font-size: 20px;
-            font-weight: 600;
-            line-height: 1.4;
-            margin-bottom: 12px;
+            font-size: 19px; font-weight: 700; line-height: 1.45;
+            margin-bottom: 14px; letter-spacing: -0.3px;
         }
-        .q-meta {
-            font-size: 13px;
-            color: #8590a6;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .q-stats {
+            display: flex; align-items: center; justify-content: space-between;
+            font-size: 13px; color: #8590a6;
         }
-        .q-btn {
-            background: #f6f6f6;
-            color: #0066ff;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: 500;
+        .q-follow-btn {
+            background: rgba(0,102,255,0.08); color: #0066ff; border: none;
+            padding: 5px 14px; border-radius: 4px; font-size: 13px; font-weight: 500;
         }
-
-        /* ===== 回答区域 ===== */
-        .answer-container {
-            padding: 16px;
-            padding-bottom: 80px;
+        .sort-bar {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 10px 16px; font-size: 13px; color: #8590a6;
+            border-bottom: 0.5px solid #f0f0f0;
         }
-        .author-card {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
+        .sort-active { color: #1a1a1a; font-weight: 500; }
+        .answer-wrap { padding: 16px 16px 90px; }
+        .author-bar {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 14px;
         }
-        .author-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .author-left { display: flex; align-items: center; gap: 10px; }
         .avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 16px;
+            width: 38px; height: 38px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 700; font-size: 16px; flex-shrink: 0;
         }
-        .author-info { display: flex; flex-direction: column; gap: 2px; }
-        .author-name { font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 4px; }
-        .author-badge { color: #f1403c; font-size: 12px; }
-        .author-bio { font-size: 12px; color: #8590a6; }
+        .av-main { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .author-detail { display: flex; flex-direction: column; gap: 2px; }
+        .a-name { font-size: 15px; font-weight: 600; color: #1a1a1a; }
+        .a-bio { font-size: 12px; color: #8590a6; }
+        .a-badge { color: #f1403c; font-size: 11px; }
         .follow-btn {
-            color: #0066ff;
-            background: rgba(0, 102, 255, 0.1);
-            border: none;
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-size: 13px;
-            font-weight: 500;
+            color: #0066ff; background: rgba(0,102,255,0.08); border: none;
+            padding: 5px 14px; border-radius: 16px; font-size: 13px; font-weight: 500;
         }
+        .article {
+            font-size: 16px; line-height: 1.85; color: #1a1a1a; word-break: break-word;
+        }
+        .article p { margin-bottom: 18px; }
+        .article strong { font-weight: 600; }
+        .article em { font-style: normal; color: #999; font-size: 14px; }
+        .article blockquote {
+            border-left: 3px solid #e8e8e8; padding: 4px 0 4px 14px;
+            color: #666; margin: 4px 0 18px; font-size: 15px; line-height: 1.7;
+        }
+        .article .divider {
+            text-align: center; color: #ccc; margin: 28px 0;
+            font-size: 14px; letter-spacing: 8px;
+        }
+        .article h2 {
+            font-size: 17px; font-weight: 700; margin: 28px 0 14px;
+            padding-left: 10px; border-left: 3px solid #0066ff;
+        }
+        .article .price-table {
+            background: #f9f9f9; border-radius: 8px; padding: 14px 16px;
+            margin-bottom: 18px; font-size: 14px; line-height: 2;
+        }
+        .article .price-table .pt-title {
+            font-weight: 600; font-size: 15px; margin-bottom: 6px; color: #333;
+        }
+        .article .price-table .pt-row {
+            display: flex; justify-content: space-between; border-bottom: 0.5px dashed #e0e0e0;
+            padding: 2px 0;
+        }
+        .article .price-table .pt-row:last-child { border-bottom: none; }
+        .article .price-table .pt-price { color: #e74c3c; font-weight: 500; }
+        .article .warn-box {
+            background: #fff5f5; border: 1px solid #ffe0e0; border-radius: 8px;
+            padding: 14px 16px; margin-bottom: 18px; font-size: 14px;
+            line-height: 1.7; color: #c0392b;
+        }
+        .article .scene-box {
+            background: #f6f6f6; border-radius: 8px; padding: 14px 16px;
+            margin-bottom: 18px; font-size: 14px; line-height: 1.8;
+        }
+        .article .scene-box .sb-title {
+            font-weight: 600; font-size: 15px; margin-bottom: 8px;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .article .scene-box .sb-tag {
+            font-size: 11px; background: #0066ff; color: #fff;
+            padding: 1px 6px; border-radius: 3px; font-weight: 400;
+        }
+        .article .scene-box .sb-tag.red { background: #e74c3c; }
+        .article .scene-box .sb-tag.gold { background: #f39c12; }
 
-        /* 正文排版 */
-        .article-content {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #1a1a1a;
+        .publish-line {
+            font-size: 12px; color: #c8c8c8; margin-top: 20px;
+            padding-bottom: 16px; border-bottom: 0.5px solid #f0f0f0;
         }
-        .article-content p { margin-bottom: 16px; }
-        .article-content strong { font-weight: 600; }
-        .article-content blockquote {
-            border-left: 3px solid #ebebeb;
-            padding-left: 12px;
-            color: #8590a6;
+        .like-bar {
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px 0; border-bottom: 0.5px solid #f0f0f0;
+            font-size: 13px; color: #8590a6;
+        }
+        .like-avatars { display: flex; margin-right: 4px; }
+        .like-avatars .la {
+            width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #fff;
+            margin-left: -6px; display: flex; align-items: center; justify-content: center;
+            font-size: 9px; color: #fff;
+        }
+        .comments-zone { padding: 16px 0; }
+        .cz-head {
+            display: flex; align-items: center; justify-content: space-between;
             margin-bottom: 16px;
-            font-size: 15px;
-            background: #fafafa;
-            padding: 10px 12px;
-            border-radius: 0 4px 4px 0;
         }
-        .publish-info {
-            font-size: 12px;
-            color: #bfbfbf;
-            margin-top: 24px;
-            padding-bottom: 16px;
-            border-bottom: 0.5px solid #ebebeb;
+        .cz-title { font-size: 15px; font-weight: 600; }
+        .cz-sort { font-size: 13px; color: #8590a6; }
+        .cmt {
+            display: flex; gap: 10px; margin-bottom: 20px;
+            padding-bottom: 16px; border-bottom: 0.5px solid #f6f6f6;
         }
-
-        /* ===== 评论区 ===== */
-        .comments-section {
-            padding: 16px 0;
+        .cmt:last-child { border-bottom: none; }
+        .cmt-av {
+            width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; color: #fff; font-weight: 500;
         }
-        .comments-header {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 16px;
+        .cmt-body { flex: 1; min-width: 0; }
+        .cmt-top { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+        .cmt-name { font-size: 13px; font-weight: 500; color: #666; }
+        .cmt-badge {
+            font-size: 10px; background: #f0f7ff; color: #0066ff;
+            padding: 1px 5px; border-radius: 2px;
         }
-        .comment-item {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
+        .cmt-badge.author { background: #fff7e6; color: #fa8c16; }
+        .cmt-badge.red { background: #fff1f0; color: #e74c3c; }
+        .cmt-text { font-size: 14px; line-height: 1.6; margin-bottom: 6px; color: #1a1a1a; }
+        .cmt-bottom {
+            display: flex; align-items: center; gap: 14px;
+            font-size: 12px; color: #b0b0b0;
         }
-        .c-avatar {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: #eee;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            color: #999;
+        .cmt-like { display: flex; align-items: center; gap: 3px; }
+        .cmt-like svg { width: 14px; height: 14px; }
+        .cmt-replies {
+            background: #f9f9f9; border-radius: 6px; padding: 10px 12px; margin-top: 8px;
         }
-        .c-content { flex: 1; }
-        .c-name { font-size: 13px; color: #8590a6; margin-bottom: 4px; font-weight: 500; }
-        .c-name.author-tag::after {
-            content: '作者';
-            background: #f6f6f6;
-            color: #8590a6;
-            font-size: 10px;
-            padding: 1px 4px;
-            border-radius: 2px;
-            margin-left: 6px;
+        .cmt-reply-item { margin-bottom: 10px; }
+        .cmt-reply-item:last-child { margin-bottom: 0; }
+        .cr-name { font-size: 13px; color: #666; font-weight: 500; }
+        .cr-name.is-author { color: #fa8c16; }
+        .cr-text { font-size: 13px; color: #333; line-height: 1.55; }
+        .cr-time { font-size: 11px; color: #c0c0c0; margin-top: 3px; }
+        .cmt-more-replies {
+            font-size: 13px; color: #0066ff; margin-top: 6px; cursor: pointer;
         }
-        .c-text { font-size: 14px; line-height: 1.5; margin-bottom: 6px; }
-        .c-meta {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            font-size: 12px;
-            color: #8590a6;
-        }
-        .c-reply-box {
-            background: #f6f6f6;
-            padding: 8px 12px;
-            border-radius: 4px;
-            margin-top: 8px;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-        .c-reply-name { color: #555; font-weight: 500; }
-
-        /* ===== 底部悬浮操作栏 ===== */
-        .bottom-action-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            max-width: 500px;
-            margin: 0 auto;
-            background: #fff;
+        .bottom-bar {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            max-width: 500px; margin: 0 auto; background: #fff;
             border-top: 0.5px solid #ebebeb;
-            padding: 8px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-bottom: calc(8px + env(safe-area-inset-bottom));
-            z-index: 100;
+            padding: 8px 16px; padding-bottom: calc(8px + env(safe-area-inset-bottom));
+            display: flex; align-items: center; justify-content: space-between; z-index: 100;
         }
-        .vote-group {
-            display: flex;
-            background: #f6f6f6;
-            border-radius: 4px;
-            overflow: hidden;
+        .vote-box {
+            display: flex; background: #f6f6f6; border-radius: 6px; overflow: hidden;
         }
-        .vote-btn {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            padding: 8px 12px;
-            border: none;
-            background: transparent;
-            color: #0066ff;
-            font-size: 14px;
-            font-weight: 500;
+        .v-btn {
+            display: flex; align-items: center; gap: 4px;
+            padding: 8px 14px; border: none; background: transparent;
+            font-size: 14px; font-weight: 500; color: #0066ff;
         }
-        .vote-btn.downvote {
-            background: #f6f6f6;
-            border-left: 1px solid #fff;
-            color: #8590a6;
+        .v-btn svg { width: 16px; height: 16px; fill: currentColor; }
+        .v-btn.down { color: #8590a6; border-left: 1.5px solid #fff; }
+        .bar-icons { display: flex; gap: 20px; }
+        .bar-icon {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 1px; color: #8590a6;
         }
-        .action-icons {
-            display: flex;
-            gap: 20px;
-            color: #8590a6;
+        .bar-icon svg { width: 20px; height: 20px; }
+        .bar-icon span { font-size: 10px; }
+        .load-more {
+            text-align: center; color: #0066ff; font-size: 14px;
+            padding: 16px 0; cursor: pointer;
         }
-        .action-icon {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-            font-size: 10px;
-        }
-        .action-icon svg { width: 20px; height: 20px; }
     </style>
 </head>
 <body>
 
-    <!-- 顶部导航 -->
-    <div class="nav-header">
-        <a href="zhihu.html" class="back-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-        </a>
-        <div class="nav-actions">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+<div class="nav-header">
+    <a href="zhihu.html" class="back-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <div class="nav-right">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+    </div>
+</div>
+
+<div class="question-section">
+    <div class="q-tags">
+        <span class="q-tag">法律</span>
+        <span class="q-tag">商业伦理</span>
+        <span class="q-tag">缩小人权益</span>
+    </div>
+    <h1 class="q-title">如何看待最近被曝光的「小人养生馆」？里面到底在做什么？</h1>
+    <div class="q-stats">
+        <span>3,892 个回答 · 5.6 万关注</span>
+        <button class="q-follow-btn">+ 关注</button>
+    </div>
+</div>
+
+<div class="sort-bar">
+    <span><span class="sort-active">默认排序</span></span>
+    <span>切换为时间排序</span>
+</div>
+
+<div class="answer-wrap">
+    <div class="author-bar">
+        <div class="author-left">
+            <div class="avatar av-main">沈</div>
+            <div class="author-detail">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span class="a-name">沈律说法</span>
+                    <span class="a-badge">✓</span>
+                </div>
+                <span class="a-bio">执业律师 · 知乎法律话题优秀答主 · IP 属地北京</span>
+            </div>
         </div>
+        <button class="follow-btn">+ 关注</button>
     </div>
 
-    <!-- 问题区域 -->
-    <div class="question-header">
-        <div class="q-tags">
-            <span class="q-tag">法律</span>
-            <span class="q-tag">商业伦理</span>
-            <span class="q-tag">社会热点</span>
+    <div class="article">
+        <p><strong>利益相关：今年代理了两起涉及「微型人体验会所」的案件，一起民事一起刑事。以下内容均已脱敏处理。</strong></p>
+
+        <p>先说结论——</p>
+
+        <p>目前市面上这类会所，打着"养生""微观疗愈""缩小人互动体验"的旗号，做的事情和招牌上写的<strong>完全是两码事</strong>。</p>
+
+        <p>本质上它们就是一种以缩小人为"道具"的情色娱乐场所。</p>
+
+        <p>如果非要打个比方，你可以理解为：<strong>猫咖/狗咖的R18版本，只不过"猫"和"狗"换成了真实的、有公民身份的、缩小的人。</strong></p>
+
+        <p class="divider">— — —</p>
+
+        <h2>一、我接触到的真实情况</h2>
+
+        <p>2025年底我代理的那个刑事案件，涉及杭州一家叫"XX微境·身心疗愈馆"的会所。表面上是个装修高档的SPA馆，门头做得很清新，logo是一只手捧着一朵花，宣传语是"感受微观世界的宁静"。</p>
+
+        <p>实际上呢？</p>
+
+        <p>公安侦查后发现，这家店一共雇佣了<strong>218名缩小人</strong>，分布在三种不同的"场景房"里。这些缩小人有的是自愿签劳务合同的，有的是被中介以"高薪养生岗位"骗来的，还有的——是被前雇主非法二次转卖的。</p>
+
+        <p>我去看了现场取证的照片和视频。说实话，从业这么多年，我以为自己什么都见过了，但那天看完我沉默了很久。</p>
+
+        <p>下面我把三种场景房分别说一下。</p>
+
+        <h2>二、三种场景房</h2>
+
+        <div class="scene-box">
+            <div class="sb-title">
+                场景一：「小人国」<span class="sb-tag">50倍缩小</span>
+            </div>
+            <p>这个房间大概30平方米，布置成了一个微缩王国的样子——有城堡、有街道、有小广场，做得很精致，像那种模型沙盘。里面"住"着大约<strong>60个50倍缩小的人</strong>，身高3.5cm左右。他们穿着统一的"小人国居民"服装，男的穿中世纪侍卫装，女的穿女仆装。</p>
+            <p>客户进去之后，扮演"闯入小人国的女巨人"。</p>
+            <p>具体玩法是这样的：客户可以选择穿店里提供的各种鞋子或者赤脚进入，在"城市"里走动，小人们会按照排练好的剧本，假装惊慌逃跑、假装组织军队"抵抗"、假装用绳索把客户的脚趾"捆住"——当然根本绑不住，就是一种角色扮演。</p>
+            <p>然后客户假装"被俘虏"，躺下来，几十个小人会爬到客户身上进行全身按摩。据在场工作人员的证词，大部分客户到这一步就已经很兴奋了——几十个3.5厘米的人在你身上爬来爬去，那种酥麻的触感，据说"比任何按摩器都刺激"。</p>
+            <p><strong>这个项目相对来说还算"温和"的。</strong>小人有一定的自主活动空间，有休息时间，合同上也写了安全条款。问题最大的是后面两个。</p>
         </div>
-        <h1 class="q-title">如何看待最近被曝光的「小人养生馆」？里面到底在做什么？</h1>
-        <div class="q-meta">
-            <span>关注 5.6万 · 浏览 1,240万</span>
-            <button class="q-btn">+ 关注问题</button>
+
+        <div class="scene-box">
+            <div class="sb-title">
+                场景二：「巨大化」<span class="sb-tag red">1000倍缩小</span>
+            </div>
+            <p>这个是"进阶房"，消费门槛高不少。</p>
+            <p>房间地面上铺设了一个大约4米×3米的微缩城市模型，但这不是普通模型——<strong>里面住着真实的1000倍缩小的人</strong>，身高约1.75毫米，肉眼只能看到小点在移动。城市里有楼房、有道路、有微型灯光，这些建筑是按照真实城市的比例用3D打印做的，但里面确实有小人在"生活"。</p>
+            <p>大约<strong>120人</strong>长期生活在这座城市里，有自己的社区、作息。</p>
+            <p>客户怎么玩呢？</p>
+            <p>店员会提供各种选项——</p>
+            <p>客户可以选择穿丝袜、棉袜、光脚等不同方式，直接踩进这座城市。可以在城区里走动，脚底下压碎微型建筑；可以蹲下来用手指推倒一排"大楼"；可以趴下来，用胸部慢慢压过几个街区；最受欢迎的项目，是客户脱掉内裤，M字型坐在城市中央——对于里面的居民来说，那个画面是……你们自己想象吧。</p>
+            <p>房间里安装了高倍摄像头，客户可以通过旁边的大屏幕实时看到微缩视角下发生的一切——小人们逃跑的画面，建筑被压碎的画面，以及客户自己的身体在微缩尺度下呈现出的……"地形"。</p>
+            <p>每次"使用"后，工作人员会清理废墟，补充损坏的建筑和——我不知道该怎么说——<strong>补充人员</strong>。</p>
         </div>
+
+        <div class="scene-box">
+            <div class="sb-title">
+                场景三：「造物主」<span class="sb-tag gold">10000倍缩小 · VIP</span>
+            </div>
+            <p>这是最高级别的项目，预约制，<strong>单次收费8800元起</strong>。</p>
+            <p>一个放在地面上的大型特制玻璃缸，直径约1.2米，深约40厘米。里面生活着<strong>约40个10000倍缩小的人</strong>——身高只有0.175毫米，比头发丝粗不了多少，肉眼完全看不到。</p>
+            <p>但他们是真实的人。</p>
+            <p>这个玻璃缸对他们来说就是一整片大陆。他们在里面搭建了自己的微型城镇——用玻璃缸内壁提供的微型材料，一点一点地建。有道路、有建筑、有农田，甚至有他们自己画的壁画。据技术人员说，这些小人花了将近三个月才建成一座像样的"城市"，然后会所就开始对外开放预约。</p>
+            <p><strong>所以这个项目的等待时间很长——因为要等里面的人把城市建好，然后让客户去摧毁。</strong></p>
+            <p>具体玩法——</p>
+            <p>玻璃缸里有多个高倍微型摄像头，连接到旁边的4K大屏。客户可以看到小人视角的一切，包括他们的表情。</p>
+            <p>客户可以做以下操作：</p>
+            <p>· 将自己的贴身衣物投入缸中——比如穿过的内裤、袜子。对于里面的小人来说，一只袜子从天而降就像一座山被丢进来，气味对他们来说是铺天盖地的。屏幕上会实时显示小人们的反应。</p>
+            <p>· 将手指伸进缸里，用指尖碾压建筑。指纹的一道纹路对他们来说有5米宽。</p>
+            <p>· 将一只脚放进缸中——赤脚或穿丝袜——脚底慢慢降下来，压过他们花了三个月建好的一切。大屏幕上实时播放小人们奔逃的画面。</p>
+            <p>· 最受欢迎的选项——客户用手指从自己的下体摩挲几滴分泌物，滴进玻璃缸。对于10000倍缩小的人来说，一滴液体就是一片湖泊。</p>
+            <p>侦查视频里有一段画面我记得很清楚：一个女性客户把穿了一天的黑色蕾丝内裤丢进去之后，微型摄像头拍到几个小人被内裤上残留的体液黏住了，在里面挣扎。客户看着屏幕笑了。</p>
+            <p>然后她问店员："他们能活吗？"</p>
+            <p>店员说："大部分能，我们会处理的。"</p>
+        </div>
+
+        <div class="price-table">
+            <div class="pt-title">💰 公安查获的价目表（部分）</div>
+            <div class="pt-row"><span>「小人国」基础体验 60分钟</span><span class="pt-price">¥388</span></div>
+            <div class="pt-row"><span>「小人国」深度互动 120分钟</span><span class="pt-price">¥688</span></div>
+            <div class="pt-row"><span>「巨大化」标准踩踏 60分钟</span><span class="pt-price">¥1,288</span></div>
+            <div class="pt-row"><span>「巨大化」全方位体验 90分钟</span><span class="pt-price">¥2,588</span></div>
+            <div class="pt-row"><span>「造物主」VIP 预约体验 不限时</span><span class="pt-price">¥8,800起</span></div>
+            <div class="pt-row"><span>「造物主」双人同行</span><span class="pt-price">¥15,800</span></div>
+            <div class="pt-row"><span>加购：指定丝袜/鞋款</span><span class="pt-price">¥80-280</span></div>
+            <div class="pt-row"><span>加购：微型视角录像U盘带走</span><span class="pt-price">¥500</span></div>
+        </div>
+
+        <h2>三、法律层面的问题</h2>
+
+        <p>这类会所的法律问题非常复杂，我挑几个核心的说——</p>
+
+        <p><strong>1. 劳动关系认定。</strong>50倍场景里的小人，部分确实签了劳务合同，有底薪有社保。但1000倍和10000倍的小人，几乎全部没有合同。很多人是被中介以"高薪体验岗"骗来，缩小后直接"安置"进场景房，再也没出来过。他们在里面的生活、建设、被摧毁、再重建——这就是他们的"工作"，但他们没有拿到任何报酬。</p>
+
+        <p><strong>2. 人身安全。</strong>1000倍房间每次"使用"后的"人员补充"意味着什么？意味着有人在这个过程中死了。店方的说法是"自然损耗"——这个词让我作为律师听到都觉得毛骨悚然。一个人的死亡被称为"损耗"。</p>
+
+        <p><strong>3. 知情同意。</strong>10000倍场景里的小人，很多人在被缩小之前并不知道自己会被缩小到这个程度，更不知道自己会被放进一个玻璃缸里"供人玩赏"。这涉及严重的欺诈和强制。</p>
+
+        <p><strong>4. 如何定罪？</strong>这是最头疼的。客户踩碎了1000倍城市里的建筑，里面有没有人？有几个？能查清楚吗？一个10000倍缩小的人死亡，尸体只有十几微米，怎么取证？</p>
+
+        <div class="warn-box">
+            ⚠️ 目前杭州这个案件已经移送检察院审查起诉，涉及罪名包括：组织他人强迫劳动罪、非法拘禁罪、过失致人死亡罪（多起）。老板和两个股东已经逮捕。但客户目前没有被追诉——这一点争议很大。
+        </div>
+
+        <h2>四、不止杭州一家</h2>
+
+        <p>这个案子曝光之后，我陆续收到来自上海、深圳、成都、长沙等地的法律咨询。据我了解，<strong>类似的会所全国至少有二三十家</strong>，有的规模更大，有的项目更极端。</p>
+
+        <p>有同行告诉我，深圳有一家更离谱——他们提供的是"定制剧情"服务。客户可以指定小人们在城市里建什么、写什么标语、穿什么衣服，然后再去摧毁。据说有客户让10000倍的小人们在城市广场上竖一块写着"欢迎女神降临"的牌子，然后她赤脚踩下去把整个广场碾平。</p>
+
+        <p>全程微型摄像头拍摄。</p>
+
+        <p>我不知道该用什么词来定义这种行为。你说它是色情产业？它没有传统意义上的性行为。你说它是虐待？客户可以辩称她只是"在地板上走路"。你说它是谋杀？没有人能证明那些肉眼看不见的小点就是人。</p>
+
+        <p><strong>但他们是人。</strong></p>
+
+        <p>哪怕只有0.175毫米高，哪怕肉眼完全看不见，哪怕他们的呐喊声连蚊子的万分之一都不如——他们有意识、有感受、有恐惧、有痛觉。他们花三个月建起一座城市，是因为那是他们唯一能做的、让自己觉得自己还是"人"的事情。</p>
+
+        <p>然后一只脚踩下来，什么都没了。</p>
+
+        <p class="divider">— — —</p>
+
+        <p>最后说一句不太专业的话。</p>
+
+        <p>我做律师十一年了，见过很多人性的阴暗面，但这个案子让我真正理解了一个词——<strong>"去人化"</strong>。当一个人被缩小到肉眼不可见的程度，当他的存在变成屏幕上一个像素点大小的小点，对施加行为的人来说，他就不再是"人"了。他是景观，是内容，是玩法，是体验——唯独不是人。</p>
+
+        <p>这才是最可怕的地方。</p>
+
+        <p>技术让体型差成为可能，而体型差让"去人化"变得无比容易。</p>
+
+        <p>以上。有后续进展会更新。</p>
+
+        <p><em>（评论区不接受个案法律咨询，有需要请私信预约。另外请不要在评论区问我"哪里还能体验"，谢谢。）</em></p>
     </div>
 
-    <!-- 回答区域 -->
-    <div class="answer-container">
-        <div class="author-card">
-            <div class="author-left">
-                <div class="avatar">沈</div>
-                <div class="author-info">
-                    <span class="author-name">沈律说法 <span class="author-badge">✓</span></span>
-                    <span class="author-bio">执业律师 · 知乎法律话题优秀答主</span>
-                </div>
-            </div>
-            <button class="follow-btn">+ 关注</button>
-        </div>
-
-        <div class="article-content">
-            <p>利益相关：刑辩律师，去年刚代理过两起涉嫌组织“微型色情服务”的案子。</p>
-            <p>先说结论：你们在新闻里看到的“小人养生馆”，只是冰山一角。里面真正在做的，是利用极端的体型悬殊，满足部分正常体型女性的<strong>“绝对支配欲”</strong>和猎奇心理。</p>
-            <p>卷宗里的细节，说实话，连我这个干了十几年刑辩的人看了都觉得头皮发麻。</p>
-            
-            <p>这些会所的客户群体非常明确：有钱、压力大、寻求刺激的正常体型女性。而提供服务的“技师”，清一色是按 50 倍（约 3.5 厘米）或 100 倍（约 1.7 厘米）缩小的男性。</p>
-            
-            <p>我代理的其中一个案子，会所主打的项目叫<strong>「微不足道」</strong>。</p>
-            <p>听起来像是小人给你按脚对吧？错。是小人用全身去“服务”客户的脚。</p>
-            <p>根据当事人（一名 3.5 厘米的缩小男）的笔录，当女客户脱下高跟鞋，把脚伸进特制的玻璃服务舱时，对他来说，那就像是一辆散发着浓烈温热气息的肉色公交车开了进来。脚底的面积足足有一个篮球场那么大。</p>
-            <p>客户会命令他清理脚趾缝。在 50 倍的视角下，女人的脚趾缝深达一米，里面极其闷热、潮湿，充斥着浓郁的汗味。他必须整个人钻进去，用特制的海绵甚至自己的身体去摩擦。如果客户心情好，只是觉得痒，笑两声；如果客户心情不好，脚趾微微一夹——那种力量根本不是人类能抗衡的，当事人说他好几次感觉自己的肋骨都要断了。</p>
-            
-            <p>更越界的项目叫<strong>「深谷探秘」</strong>。</p>
-            <p>这个项目收费高达五位数。技师会被放在客户的胸口或者更私密的位置。想象一下，对于一个不到两厘米的人来说，女人的乳沟就是一道深不见底、两侧是柔软肉壁的温热峡谷。随着客户的呼吸，峡谷会不断挤压。</p>
-            <p>笔录里有一段话我印象极深，我稍微做点脱敏处理放出来：</p>
-            
-            <blockquote>
-                “我明知道她只要翻个身就能把我压成肉泥，那种恐惧感让我浑身发抖。但周围全是她皮肤的温度和那种让人窒息的香味，我的身体竟然不受控制地有了反应……她看着我那个样子，笑得特别大声，用指甲盖拨弄我。。”
-            </blockquote>
-
-            <p>这就是这些会所的核心卖点：<strong>绝对的体型压制带来的心理快感。</strong></p>
-            <p>在法律上，这处于一个极其尴尬的灰色地带。算卖淫嫖娼吗？双方器官根本无法发生传统意义上的接触。算故意伤害吗？这些缩小者都是签了“自愿免责协议”的，为了高达上千元的小时费，他们是“自愿”被玩弄的。</p>
-            <p>但从伦理上讲，这绝对是对缩小者人格的彻底物化。他们不再是人，而是某种带有体温的、会恐惧、会勃起的“情趣玩具”。</p>
-            <p>目前警方只能以“非法经营”和“寻衅滋事”来查处。但我可以负责任地告诉大家，只要体型差带来的这种畸形权力关系还在，只要还有人愿意为了钱出卖尊严，这种地下产业就永远禁不绝。</p>
-        </div>
-
-        <div class="publish-info">
-            发布于 2026-03-07 09:15 · IP 属地浙江 · 未经允许严禁转载
-        </div>
-
-        <!-- 评论区 -->
-        <div class="comments-section">
-            <div class="comments-header">评论 3,892</div>
-
-            <!-- 评论 1 -->
-            <div class="comment-item">
-                <div class="c-avatar" style="background:#ffeaa7; color:#d63031;">卧</div>
-                <div class="c-content">
-                    <div class="c-name">卧龙凤雏</div>
-                    <div class="c-text">大受震撼...这不就是合法的虐待吗？把人当玩具玩，这帮有钱女人的心理是有多变态啊。</div>
-                    <div class="c-meta">
-                        <span>03-07 09:30</span>
-                        <span>赞 8542</span>
-                        <span>回复</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 评论 2 -->
-            <div class="comment-item">
-                <div class="c-avatar" style="background:#74b9ff; color:#fff;">求</div>
-                <div class="c-content">
-                    <div class="c-name">求知若渴</div>
-                    <div class="c-text">沈律，求个地址，我有个朋友想去批判性地体验一下（不是</div>
-                    <div class="c-meta">
-                        <span>03-07 10:12</span>
-                        <span>赞 6105</span>
-                        <span>回复</span>
-                    </div>
-                    <div class="c-reply-box">
-                        <span class="c-reply-name">沈律说法</span> <span class="c-name author-tag"></span>：刑法警告。别拿这种事开玩笑，里面涉黑涉恶的很多。
-                    </div>
-                </div>
-            </div>
-
-            <!-- 评论 3 -->
-            <div class="comment-item">
-                <div class="c-avatar" style="background:#ff7675; color:#fff;">微</div>
-                <div class="c-content">
-                    <div class="c-name">微尘</div>
-                    <div class="c-text">作为缩小者看得浑身发冷。为了钱连尊严都不要了吗？被当成虫子一样踩在脚底下摩擦，居然还能有反应，真的是丢我们缩小人的脸！</div>
-                    <div class="c-meta">
-                        <span>03-07 11:05</span>
-                        <span>赞 4890</span>
-                        <span>回复</span>
-                    </div>
-                    <div class="c-reply-box">
-                        <span class="c-reply-name">路人甲</span>：兄弟别站着说话不腰疼，一小时一千块，你一个月工资才多少？生存面前尊严算个屁。
-                    </div>
-                </div>
-            </div>
-
-            <!-- 评论 4 -->
-            <div class="comment-item">
-                <div class="c-avatar" style="background:#dfe6e9; color:#2d3436;">喵</div>
-                <div class="c-content">
-                    <div class="c-name">喵喵酱</div>
-                    <div class="c-text">其实...站在女生的角度，如果有一个那么小的小人可以随便玩弄，不用负责任，而且对方还会因为害怕而发抖...确实挺刺激的...（顶锅盖逃）</div>
-                    <div class="c-meta">
-                        <span>03-07 12:30</span>
-                        <span>赞 3342</span>
-                        <span>回复</span>
-                    </div>
-                    <div class="c-reply-box">
-                        <span class="c-reply-name">正义使者</span>：楼上收收味，这是犯罪边缘了懂吗？
-                    </div>
-                </div>
-            </div>
-
-            <!-- 评论 5 -->
-            <div class="comment-item">
-                <div class="c-avatar" style="background:#a29bfe; color:#fff;">医</div>
-                <div class="c-content">
-                    <div class="c-name">医学狗</div>
-                    <div class="c-text">从生理学角度解释一下那个笔录：极度恐惧时肾上腺素飙升，加上密闭高温环境和强烈的嗅觉刺激（女性体味），确实会导致交感神经紊乱，产生非自愿的生理勃起。这叫“恐惧性唤起”，很惨的。</div>
-                    <div class="c-meta">
-                        <span>03-07 14:22</span>
-                        <span>赞 5156</span>
-                        <span>回复</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+    <div class="publish-line">
+        编辑于 2026-01-19 23:42 · IP 属地北京 · 著作权归作者所有
     </div>
 
-    <!-- 底部悬浮操作栏 -->
-    <div class="bottom-action-bar">
-        <div class="vote-group">
-            <button class="vote-btn">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
-                赞同 2.3万
-            </button>
-            <button class="vote-btn downvote">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" style="transform: rotate(180deg);"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
-            </button>
+    <div class="like-bar">
+        <div class="like-avatars">
+            <div class="la" style="background:#e74c3c; margin-left:0;">法</div>
+            <div class="la" style="background:#3498db;">知</div>
+            <div class="la" style="background:#2ecc71;">无</div>
+            <div class="la" style="background:#9b59b6;">一</div>
         </div>
-        <div class="action-icons">
-            <div class="action-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                <span>3892</span>
+        <span>法外狂徒张三、知乎用户 等 23,891 人赞同</span>
+    </div>
+
+    <!-- ===== 评论区 ===== -->
+    <div class="comments-zone">
+        <div class="cz-head">
+            <span class="cz-title">全部评论 3,892</span>
+            <span class="cz-sort">按热度 ▾</span>
+        </div>
+
+        <!-- 评论1 -->
+        <div class="cmt">
+            <div class="cmt-av" style="background:#e74c3c;">匿</div>
+            <div class="cmt-body">
+                <div class="cmt-top">
+                    <span class="cmt-name">匿名用户</span>
+                </div>
+                <div class="cmt-text">我去过。就这么说吧。不是杭州那家，是上海的一家，也是朋友带我去的，当时不知道具体内容，到了才知道。我体验的是「小人国」那种，50倍的。进去之前店员让我换上一双白色的过膝袜和玛丽珍鞋，我当时还觉得挺有意思的。然后推开门——地上真的有一座"小城市"，而且你低头仔细看，里面真的有小人在动。好小好小，跟蚂蚁差不多大。我第一脚踩进去的时候整个人都懵了，脚下传来很轻微的……我不知道怎么形容，碎裂感？然后有几十个小人开始爬我的鞋面，那个痒痒的感觉一路从脚背传上来，我当场腿软了。后来他们让我躺下，小人们从四面八方爬到我身上——胳膊上、锁骨上、肚子上、腿上都是。有的在给我按摩（他们整个人趴在我皮肤上用全身力气推，能感觉到微弱的压力），有的就只是在……走来走去。不说了，总之那种感觉确实很上头。但我后来想了想，越想越不对劲——他们是人啊。走出来之后我就没再去了。</div>
+                <div class="cmt-bottom">
+                    <span>01-20 01:14 · 上海</span>
+                    <span class="cmt-like">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        12,307
+                    </span>
+                    <span>回复</span>
+                </div>
+                <div class="cmt-replies">
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">渡口无舟</span>：你说"很上头"的时候还是把真实感受说出来了。其实这就是这类产业存在的原因——体验过的人都知道那种感觉。道德上过不去，但身体很诚实。</div>
+                        <div class="cr-time">01-20 02:36</div>
+                    </div>
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">匿名用户</span>：回楼上，对，你说得对。说实话那天晚上回家我想了很久。那些小人在我身上爬的时候，他们的表情我根本看不清——他们太小了。但他们能看清我。他们仰望我的脸，那个画面从他们的视角来说，可能跟仰望一座几十层的大楼一样。他们是什么心情？我不知道。但我当时只觉得"好爽"。这件事让我对自己产生了很深的怀疑。</div>
+                        <div class="cr-time">01-20 03:11</div>
+                    </div>
+                    <div class="cmt-more-replies">查看全部 451 条回复 ›</div>
+                </div>
             </div>
-            <div class="action-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-                <span>收藏</span>
+        </div>
+
+        <!-- 评论2 -->
+        <div class="cmt">
+            <div class="cmt-av" style="background:#2d3436;">前</div>
+            <div class="cmt-body">
+                <div class="cmt-top">
+                    <span class="cmt-name">匿名用户</span>
+                    <span class="cmt-badge red">当事人</span>
+                </div>
+                <div class="cmt-text">我是「巨大化」房间里待过的1000倍缩小人。我说几句。那不是什么"微缩城市模型"。那是我们住的地方。我在里面住了八个月。我们60多个人一起建的那些房子。用店方提供的微型材料，一块一块搭的。有的人在里面种了一小片"菜"（其实就是某种苔藓），有的人用碎片给自己做了张床。我们还给每条街取了名字。然后每隔几天，房间的灯会暗一下，门会打开。我们知道"她"又来了。先是震动。巨大的、持续的、越来越近的震动。然后地平线上出现一堵……肉色的墙壁——那是她的脚底。你完全无法想象那个尺度。我身高1.75毫米，她的大脚趾对我来说有25米长。她的脚底是一片天花板，慢慢压下来，挡住了所有的光。有一次她穿的黑色丝袜，那个编织纤维的网格对我来说就像巨型的钢丝笼子。然后她踩下来了。我跑了。很多人没跑掉。</div>
+                <div class="cmt-bottom">
+                    <span>01-20 09:48 · 浙江</span>
+                    <span class="cmt-like">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        28,445
+                    </span>
+                    <span>回复</span>
+                </div>
+                <div class="cmt-replies">
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">今天也要努力</span>：看得我鸡皮疙瘩都起来了。"我们还给每条街取了名字"这句话杀伤力太大了。</div>
+                        <div class="cr-time">01-20 10:15</div>
+                    </div>
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name is-author">沈律说法（作者）</span>：这位朋友，如果你愿意的话，可以私信联系我。我们正在收集受害者证词。你的经历非常重要。</div>
+                        <div class="cr-time">01-20 10:22</div>
+                    </div>
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">匿名用户</span>：回沈律师——谢谢。我已经被解救出来了，目前在一个缩小人社区接受心理辅导。但还有很多人没出来。我在里面的时候听说隔壁的「造物主」房间有40多个人，已经被那样"玩"了快半年。他们建的第三座城市在上个月又被毁了。</div>
+                        <div class="cr-time">01-20 10:57</div>
+                    </div>
+                    <div class="cmt-more-replies">查看全部 672 条回复 ›</div>
+                </div>
             </div>
-            <div class="action-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                <span>分享</span>
+        </div>
+
+        <!-- 评论3 -->
+        <div class="cmt">
+            <div class="cmt-av" style="background:#6c5ce7;">逆</div>
+            <div class="cmt-body">
+                <div class="cmt-top">
+                    <span class="cmt-name">逆光飞行</span>
+                </div>
+                <div class="cmt-text">最让我不舒服的是价目表里那个「微型视角录像U盘带走 ¥500」。也就是说你花500块钱可以拿到小人视角拍下来的、你踩碎他们城市的全过程视频。包括他们的表情。这特么不就是snuff film吗？？？</div>
+                <div class="cmt-bottom">
+                    <span>01-20 12:35 · 广东</span>
+                    <span class="cmt-like">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        7,812
+                    </span>
+                    <span>回复</span>
+                </div>
             </div>
+        </div>
+
+        <!-- 评论4 -->
+        <div class="cmt">
+            <div class="cmt-av" style="background:#00b894;">小</div>
+            <div class="cmt-body">
+                <div class="cmt-top">
+                    <span class="cmt-name">小毯子盖脸</span>
+                </div>
+                <div class="cmt-text">我是女生，我说句可能政治不正确的话。看到「小人国」那个描述的时候，我第一反应不是愤怒，是……好奇。几十个小人在我身上爬来爬去给我按摩？说实话，光看文字描述我就觉得那种感觉应该很特别。这是不是说明我也有问题？</div>
+                <div class="cmt-bottom">
+                    <span>01-20 14:03 · 湖南</span>
+                    <span class="cmt-like">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        4,556
+                    </span>
+                    <span>回复</span>
+                </div>
+                <div class="cmt-replies">
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">温柔一整片海</span>：不是你的问题，是人性的问题。权力感和支配欲是人类本能的一部分，体型差只是把这种本能放大到了极端。但有这种冲动≠应该去满足它。</div>
+                        <div class="cr-time">01-20 14:28</div>
+                    </div>
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">小毯子盖脸</span>：你说得对。但我在想，如果这些小人真的是自愿的、有合理报酬的、安全有保障的，那50倍那个项目的伦理问题真的那么严重吗？和足疗按摩的区别在哪？</div>
+                        <div class="cr-time">01-20 14:45</div>
+                    </div>
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name is-author">沈律说法（作者）</span>：区别在于权力关系是否对等。你做足疗，按摩师可以随时停手、拒绝服务、起身离开。但一个3.5厘米的人趴在你身上，他能自行离开吗？如果你翻个身把他压住了，他能反抗吗？体型差本身就构成了一种结构性的权力不对等，这不是合同可以解决的问题。</div>
+                        <div class="cr-time">01-20 16:17</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 评论5 -->
+        <div class="cmt">
+            <div class="cmt-av" style="background:#fdcb6e; color:#2d3436;">杠</div>
+            <div class="cmt-body">
+                <div class="cmt-top">
+                    <span class="cmt-name">理性讨论不杠</span>
+                </div>
+                <div class="cmt-text">说个不合时宜的角度。1000倍和10000倍那些小人被"补充"进去之后，在里面有吃有住有社区，还能自己建东西搞创作。你说他们惨，但你看看外面那些流浪的缩小人？冬天冻死在排水沟里的、被老鼠咬死的、在垃圾桶里捡东西吃的——比这个场景房里的"待遇"差多了吧？至少里面的人有地方住。</div>
+                <div class="cmt-bottom">
+                    <span>01-21 08:22 · 山东</span>
+                    <span class="cmt-like">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        623
+                    </span>
+                    <span>回复</span>
+                </div>
+                <div class="cmt-replies">
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">白夜行不行</span>：哥这话和"血汗工厂至少管饭"一个逻辑吧。人家花三个月建一座城，然后被一只脚踩平，你管这叫"有地方住"？</div>
+                        <div class="cr-time">01-21 09:14</div>
+                    </div>
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">理性讨论不杠</span>：行那我换个说法。如果这些小人真的自愿签了合同，知道工作内容是什么，也接受了报酬——那这和群众演员有什么区别？拍战争片群演也被炸来炸去的。</div>
+                        <div class="cr-time">01-21 09:45</div>
+                    </div>
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">白夜行不行</span>：群演被炸死了吗？群演活在爆炸现场里吗？群演被踩了三个月还得继续住那吗？你是真分不清还是装分不清啊</div>
+                        <div class="cr-time">01-21 10:03</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 评论6 -->
+        <div class="cmt">
+            <div class="cmt-av" style="background:#e84393;">前</div>
+            <div class="cmt-body">
+                <div class="cmt-top">
+                    <span class="cmt-name">匿名用户</span>
+                </div>
+                <div class="cmt-text">我在类似的店里做过50倍场景的"小人"。干了三个月辞了。说下我的视角吧。工作内容就是穿着制服，在模型城里待着，客户来了就按流程走——先"抵抗"，再"被俘虏"，然后爬到客户身上做按摩。底薪4000，按场次提成，做一场200。一天最多排三场。工作本身不算很累，但很考验心理素质。你知道一个165cm的女性客户对于3.5厘米的你来说意味着什么吗？你根本看不到她的脸，你视野里全部都是她的腿和脚。她穿着丝袜走进来的时候，每一步的震动都让你脚底发麻。空气里全是她的体味——不是臭，就是那种被放大了50倍的人体气息，沐浴露、香水、还有皮肤本身的味道混在一起，浓到让你晕眩。然后你要爬到她身上。</div>
+                <div class="cmt-bottom">
+                    <span>01-22 19:31 · 浙江</span>
+                    <span class="cmt-like">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        15,677
+                    </span>
+                    <span>回复</span>
+                </div>
+                <div class="cmt-replies">
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">匿名用户</span>：（接上）说几个具体的。有一个客户是个穿黑丝的年轻女白领，她特别享受让我们爬她小腿的感觉，一直说"再上去一点、再上去一点"。丝袜的纤维对我来说就像粗绳子编成的网，我抓着纤维网格往上爬，透过网格能看到她的皮肤——那种画面你们正常人永远想象不到——你面前是一面巨大的肉色墙壁，上面每一个毛孔都有我指甲盖那么大，细密的汗毛像小树一样竖着，她皮肤表面有一层薄薄的油脂和汗液混合的光泽，温热的，还在微微起伏——因为那是她大腿的血管在脉动。</div>
+                        <div class="cr-time">01-22 19:33</div>
+                    </div>
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">匿名用户</span>：（再接）还有一场让我彻底干不下去了。一个客户要求做"深度互动"，就是让我们往她身体更……私密的区域去按摩。店里是不允许的，但私下有这种加价服务。她把裙子撩开之后——我不想形容了，你们自己去想一个3.5厘米的人面对那个画面是什么感受吧。我说了不愿意，店长威胁要扣三天的工资。那天晚上我就辞职了。最后说一句——我不是在这个帖子下面来博同情的。那三个月里我确实有过很复杂的感受，不全是痛苦的，有些身体反应是不受控制的。但一个人不应该被摆在这种位置上。不管他是3.5厘米还是175厘米。</div>
+                        <div class="cr-time">01-22 19:36</div>
+                    </div>
+                    <div class="cmt-more-replies">查看全部 893 条回复 ›</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 评论7 -->
+        <div class="cmt">
+            <div class="cmt-av" style="background:#0984e3;">法</div>
+            <div class="cmt-body">
+                <div class="cmt-top">
+                    <span class="cmt-name">法外狂徒张三</span>
+                    <span class="cmt-badge">法律话题活跃答主</span>
+                </div>
+                <div class="cmt-text">跟沈律师补充一个角度——客户不被追诉这件事，我觉得检察院的逻辑可能是这样的：客户在消费时，被告知这是"合法的微缩体验服务"，客户有理由相信这是正规商业行为。但问题是，当你光着脚踩进一座有人居住的城市，看着屏幕上小人们四散奔逃，你内心真的以为这是"正规商业行为"吗？善意信赖原则在这里是否还适用，值得讨论。</div>
+                <div class="cmt-bottom">
+                    <span>01-23 11:55 · 北京</span>
+                    <span class="cmt-like">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        5,341
+                    </span>
+                    <span>回复</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 评论8 -->
+        <div class="cmt">
+            <div class="cmt-av" style="background:#fd79a8;">✿</div>
+            <div class="cmt-body">
+                <div class="cmt-top">
+                    <span class="cmt-name">春日迟迟不出门</span>
+                </div>
+                <div class="cmt-text">说个小细节。文章里提到「造物主」房间的小人花三个月建城市，然后被客户摧毁，然后他们再建。再摧毁。再建。想到了西西弗斯。但西西弗斯推的是一块没有感情的石头，这些人建的是自己的家。然后他们亲眼看着一只大到遮天蔽日的脚从天而降，把他们的家碾成粉末，碾他们的人甚至看不见他们。我说不出话来了。</div>
+                <div class="cmt-bottom">
+                    <span>01-24 02:18 · 江苏</span>
+                    <span class="cmt-like">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        9,208
+                    </span>
+                    <span>回复</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 评论9 -->
+        <div class="cmt">
+            <div class="cmt-av" style="background:#a29bfe;">心</div>
+            <div class="cmt-body">
+                <div class="cmt-top">
+                    <span class="cmt-name">心理咨询师阿梦</span>
+                    <span class="cmt-badge">优秀答主</span>
+                </div>
+                <div class="cmt-text">从心理学角度补一个点。我接触过三位去过这类会所的女性来访者。她们来咨询的原因不是内疚，而是——她们发现自己"回不去了"。一个来访者的原话："体验过之后，我看到路上的缩小人就会不自觉地想象那个场景。有一次公司里一个缩小的同事爬到我桌上找我签文件，我盯着他看了很久，脑子里全是在那个房间里的画面。我觉得我生病了。"这种权力快感一旦被激活，是会形成心理依赖的。这也是这类产业最隐蔽的危害之一——它不只伤害了缩小人，也在悄悄改变消费者看待缩小人的方式。</div>
+                <div class="cmt-bottom">
+                    <span>01-25 16:42 · 四川</span>
+                    <span class="cmt-like">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        6,834
+                    </span>
+                    <span>回复</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 评论10 -->
+        <div class="cmt">
+            <div class="cmt-av" style="background:#fab1a0; color:#2d3436;">？</div>
+            <div class="cmt-body">
+                <div class="cmt-top">
+                    <span class="cmt-name">纯路过问一句</span>
+                </div>
+                <div class="cmt-text">所以……这些店真的都关了吗？不是我要去啊就是确认一下。</div>
+                <div class="cmt-bottom">
+                    <span>01-26 23:07 · 河南</span>
+                    <span class="cmt-like">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        3,421
+                    </span>
+                    <span>回复</span>
+                </div>
+                <div class="cmt-replies">
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name is-author">沈律说法（作者）</span>：我最后一句话写的什么你没看到吗😅</div>
+                        <div class="cr-time">01-27 09:03</div>
+                    </div>
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">哈哈嗝本嗝</span>：哈哈哈哈哈全场最佳评论 你那个"不是我要去"此地无银三百两</div>
+                        <div class="cr-time">01-27 09:15</div>
+                    </div>
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">纯路过问一句</span>：我说的是真的！我就是问问！我对缩小人很尊重的！上次路上看到一个我还帮他过马路了！</div>
+                        <div class="cr-time">01-27 10:40</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 评论11 -->
+        <div class="cmt">
+            <div class="cmt-av" style="background:#636e72;">微</div>
+            <div class="cmt-body">
+                <div class="cmt-top">
+                    <span class="cmt-name">微缩世界观察者</span>
+                </div>
+                <div class="cmt-text">认真说一个很多人忽略的细节。「造物主」场景里那些10000倍的小人，他们在玻璃缸里花三个月建城市的时候——那就是他们的全部世界。他们看不到外面。他们不知道自己住在一个"玻璃缸"里。他们可能以为那片"大陆"就是整个世界。然后有一天，"天空"裂开了，一只巨大到无法理解的脚从天而降。那对他们来说不是"客户体验"，那是末日降临。想想这个吧。你每次踩下去的时候，你是他们的世界末日。</div>
+                <div class="cmt-bottom">
+                    <span>01-28 04:13 · 湖北</span>
+                    <span class="cmt-like">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        11,204
+                    </span>
+                    <span>回复</span>
+                </div>
+                <div class="cmt-replies">
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">深海鱼不说话</span>：妈的 看完这条评论我沉默了五分钟。一滴体液对他们来说就是一个湖泊……而那个人觉得自己只是"滴了一滴"。尺度的暴力比肉体的暴力更恐怖。</div>
+                        <div class="cr-time">01-28 04:38</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 评论12 -->
+        <div class="cmt">
+            <div class="cmt-av" style="background:#00cec9;">业</div>
+            <div class="cmt-body">
+                <div class="cmt-top">
+                    <span class="cmt-name">匿名用户</span>
+                </div>
+                <div class="cmt-text">做过这类店的运营，已经辞了，说几句行业内幕。1000倍和10000倍的小人来源主要有三个渠道：一是通过中介招的"自愿者"，这部分合同写得很模糊，很多人签的时候不知道自己会被缩到这么小；二是从其他会所"收购"的，对，缩小人在行业内是可以买卖的，1000倍的大概2000-5000一个，10000倍的8000-15000；三是——欠了高利贷或者其他原因被强制缩小然后"流入市场"的。第三种没法查，因为一个10000倍的人你怎么查他的来源？他连指纹都采不到。还有一件事大家可能不知道——「造物主」房间里不是只有男性缩小人，也有女性。有些女客户点名要看女性缩小人的反应。这个行业比你们想象的黑暗得多。</div>
+                <div class="cmt-bottom">
+                    <span>01-30 21:55 · 广东</span>
+                    <span class="cmt-like">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        17,892
+                    </span>
+                    <span>回复</span>
+                </div>
+                <div class="cmt-replies">
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name is-author">沈律说法（作者）</span>：方便私信聊聊吗？你提到的买卖渠道的信息对案件推进很有帮助。</div>
+                        <div class="cr-time">01-31 08:14</div>
+                    </div>
+                    <div class="cmt-reply-item">
+                        <div class="cr-text"><span class="cr-name">匿名用户</span>：可以，但我要确保匿名。我虽然辞了但还有前同事在做，怕被报复。</div>
+                        <div class="cr-time">01-31 12:20</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 评论13 -->
+        <div class="cmt">
+            <div class="cmt-av" style="background:#ff7675;">阿</div>
+            <div class="cmt-body">
+                <div class="cmt-top">
+                    <span class="cmt-name">阿巴阿巴不想上班</span>
+                </div>
+                <div class="cmt-text">看完整篇回答和评论区只有一个感受：当一个社会发明了某种技术，一定会有人用这个技术去满足人性中最原始的欲望。缩小技术出现之后，大家讨论最多的是"如何帮助缩小人融入社会"。但没有人讨论——当权力差距被物理性地放大到极致的时候，人类到底会做出什么。现在我们知道了。答案在那个玻璃缸里。</div>
+                <div class="cmt-bottom">
+                    <span>02-01 15:24 · 北京</span>
+                    <span class="cmt-like">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        8,671
+                    </span>
+                    <span>回复</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="load-more">展开更多评论 ›</div>
+    </div>
+</div>
+
+<!-- 底部操作栏 -->
+<div class="bottom-bar">
+    <div class="vote-box">
+        <button class="v-btn">
+            <svg viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+            2.3万
+        </button>
+        <button class="v-btn down">
+            <svg viewBox="0 0 24 24" style="transform:rotate(180deg)"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+        </button>
+    </div>
+    <div class="bar-icons">
+        <div class="bar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>3892</span>
+        </div>
+        <div class="bar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            <span>收藏</span>
+        </div>
+        <div class="bar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <span>分享</span>
         </div>
     </div>
+</div>
 
 </body>
 </html>
